@@ -1,3 +1,41 @@
-<Solution>
-  <Project Path="Zadachi/Zadachi.csproj" />
-</Solution>
+List<int> numbers = Console.ReadLine()
+                .Split(‘ ‘, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToList();
+
+            int numberToAdd = int.Parse(Console.ReadLine());
+            int numberToRemove = int.Parse(Console.ReadLine());
+            int indexToRemove = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($”Начален списък: {string.Join(“ “, numbers)}”);
+
+            numbers.Add(numberToAdd);
+            Console.WriteLine($”След Add: {string.Join(“ “, numbers)}”);
+
+            numbers.Insert(0, numberToAdd);
+            Console.WriteLine($”След Insert: {string.Join(“ “, numbers)}”);
+
+            if (numbers.Remove(numberToRemove))
+            {
+                Console.WriteLine($”След Remove: {string.Join(“ “, numbers)}”);
+            }
+            else
+            {
+                Console.WriteLine($”Числото {numberToRemove} не е намерено в списъка.”);
+            }
+if (indexToRemove >= 0 && indexToRemove < numbers.Count)
+            {
+                numbers.RemoveAt(indexToRemove);
+                Console.WriteLine($”След RemoveAt: {string.Join(“ “, numbers)}”);
+            }
+            else
+            {
+                Console.WriteLine(“Невалиден индекс.”);
+            }
+
+            Console.WriteLine($”Краен брой елементи: {numbers.Count}”);
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                Console.WriteLine($”{i}. {numbers[i]}”);
+            }
+
