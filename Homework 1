@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Задача
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> list = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            int addNum = int.Parse(Console.ReadLine());
+            int remNum = int.Parse(Console.ReadLine());
+            int index = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Начален списък: " + string.Join(" ", list));
+
+            list.Add(addNum);
+            Console.WriteLine("След Add: " + string.Join(" ", list));
+
+            list.Insert(0, addNum);
+            Console.WriteLine("След Insert: " + string.Join(" ", list));
+
+            if (list.Contains(remNum))
+            {
+                list.Remove(remNum);
+                Console.WriteLine("След Remove: " + string.Join(" ", list));
+            }
+            else
+            {
+                Console.WriteLine("Числото го няма в списъка.");
+            }
+
+            if (index >= 0 && index < list.Count)
+            {
+                list.RemoveAt(index);
+                Console.WriteLine("След RemoveAt: " + string.Join(" ", list));
+            }
+            else
+            {
+                Console.WriteLine("Невалиден индекс.");
+            }
+
+            Console.WriteLine("Краен брой елементи: " + list.Count);
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine($"{i}. {list[i]}");
+            }
+        }
+    }
+}
